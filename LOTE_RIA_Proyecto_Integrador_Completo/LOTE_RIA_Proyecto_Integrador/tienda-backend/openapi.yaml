@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: LOTE RIA — API REST Comercio Electrónico
+  version: 1.0.0
+  description: >
+    API REST para el Proyecto Integrador de Comercio Electrónico (LOTE RIA).
+    Lote de vehículos seminuevos/usados certificados con diferenciación explícita de unidades nuevas (0 km).
+servers:
+  - url: http://localhost:3001
+    description: Servidor local de desarrollo
+paths:
+  /api/auth/register:
+    post:
+      summary: Registro de cliente
+      responses:
+        '201': { description: Usuario creado con cookie HttpOnly }
+  /api/auth/login:
+    post:
+      summary: Inicio de sesión
+      responses:
+        '200': { description: Sesión iniciada }
+  /api/products:
+    get:
+      summary: Consultar catálogo con filtros
+      responses:
+        '200': { description: Lista paginada de vehículos }
+  /api/orders:
+    post:
+      summary: Confirmar pedido transaccional
+      responses:
+        '201': { description: Pedido creado con folio }
+  /api/payments:
+    post:
+      summary: Ejecutar pago simulado en sandbox (sin PAN/CVV)
+      responses:
+        '200': { description: Pago capturado o rechazado }
+  /api/returns:
+    post:
+      summary: Solicitar devolución, cambio o garantía
+      responses:
+        '201': { description: Solicitud registrada }
+  /api/support:
+    post:
+      summary: Crear ticket de atención al cliente
+      responses:
+        '201': { description: Ticket registrado }
